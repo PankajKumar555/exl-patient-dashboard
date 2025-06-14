@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Card,
   CardContent,
@@ -11,7 +11,18 @@ const MoodCheckIn = () => {
   const [mood, setMood] = useState("🙂");
 
   return (
-    <Card>
+    <Card
+      sx={{
+        minHeight: "250px",
+        maxHeight: "250px",
+        overflowY: "auto",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+        pb: 1,
+        bgcolor: "#ffffe6",
+      }}
+    >
       <CardContent>
         <Typography variant="h6">Mood Check-In</Typography>
         <ToggleButtonGroup

@@ -1,19 +1,13 @@
-import React from "react";
 import { Card, CardContent, Typography, List, ListItem } from "@mui/material";
 
-const reports = [
-  { title: "BP Log", date: "2025-06-12" },
-  { title: "Glucose Chart", date: "2025-06-10" },
-];
-
-const ReportsViewer = () => (
+const PatientReports = ({ reports }) => (
   <Card>
     <CardContent>
       <Typography variant="h6">Patient Reports</Typography>
       <List>
         {reports.map((r, i) => (
-          <ListItem key={i}>
-            {r.title} - {r.date}
+          <ListItem key={i} divider>
+            <strong>{r.type}</strong> ({r.date}): {r.notes}
           </ListItem>
         ))}
       </List>
@@ -21,4 +15,4 @@ const ReportsViewer = () => (
   </Card>
 );
 
-export default ReportsViewer;
+export default PatientReports;

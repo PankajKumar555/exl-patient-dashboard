@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -48,16 +48,36 @@ const Login = () => {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: "#f0f2f5",
+        background: "linear-gradient(to right, #6dd5ed, #2193b0)",
+        p: 2,
       }}
     >
-      <Paper elevation={3} sx={{ p: 4, width: 300 }}>
-        <Typography variant="h5" gutterBottom>
-          Login
+      <Paper
+        elevation={6}
+        sx={{
+          p: 4,
+          width: "100%",
+          maxWidth: 400,
+          borderRadius: 4,
+          textAlign: "center",
+          backgroundColor: "#ffffffee",
+        }}
+      >
+        <Typography
+          variant="h4"
+          sx={{ mb: 3, fontWeight: 600, color: "#1976d2" }}
+        >
+          Welcome
         </Typography>
-        <FormControl fullWidth sx={{ mb: 2 }}>
-          <InputLabel>Select Role</InputLabel>
+
+        <Typography variant="body1" sx={{ mb: 3, color: "#555" }}>
+          Please select your role to continue
+        </Typography>
+
+        <FormControl fullWidth sx={{ mb: 3 }}>
+          <InputLabel id="role-select-label">Select Role</InputLabel>
           <Select
+            labelId="role-select-label"
             value={role}
             label="Select Role"
             onChange={(e) => setRole(e.target.value)}
@@ -70,12 +90,20 @@ const Login = () => {
             <MenuItem value="emergency">Emergency</MenuItem>
           </Select>
         </FormControl>
+
         <Button
           variant="contained"
           color="primary"
           fullWidth
           onClick={handleLogin}
           disabled={!role}
+          sx={{
+            py: 1.2,
+            fontSize: "1rem",
+            fontWeight: 500,
+            borderRadius: 2,
+            boxShadow: "0 3px 6px rgba(0,0,0,0.1)",
+          }}
         >
           Continue
         </Button>

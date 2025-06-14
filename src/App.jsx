@@ -5,7 +5,6 @@ import {
   Navigate,
   useLocation,
 } from "react-router-dom";
-// import NavBar from "./components/NavBar";
 import Login from "./pages/login/Login";
 import PatientDashboard from "./pages/patient/PatientDashboard";
 import ProviderDashboard from "./pages/provider/ProviderDashboard";
@@ -27,7 +26,6 @@ const ProtectedRoute = ({ element, role }) => {
 function App() {
   return (
     <Router>
-      {/* <NavBar /> */}
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/login" element={<Login />} />

@@ -1,20 +1,22 @@
-// Folder: src/pages/provider/components/AISuggestions.js
-import React from "react";
 import { Card, CardContent, Typography, List, ListItem } from "@mui/material";
 
-const AISuggestions = () => {
-  const suggestions = [
-    "Patient missed 3 BP readings this week.",
-    "Consider adjusting medication dose.",
-    "Schedule a follow-up for glucose trend.",
-  ];
-
+const AISuggestions = ({ selectedPatient }) => {
   return (
-    <Card>
+    <Card
+      sx={{
+        minHeight: "250px",
+        maxHeight: "400px",
+        overflowY: "auto",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+        pb: 1,
+      }}
+    >
       <CardContent>
         <Typography variant="h6">AI Care Suggestions</Typography>
         <List>
-          {suggestions.map((s, i) => (
+          {selectedPatient?.suggestions.map((s, i) => (
             <ListItem key={i}>{s}</ListItem>
           ))}
         </List>

@@ -1,15 +1,25 @@
-import React from "react";
 import { Card, CardContent, Typography, List, ListItem } from "@mui/material";
-import { vitals } from "../../data/data";
 
-const HealthSummaryCard = () => (
-  <Card>
+const HealthSummaryCard = ({ vitals }) => (
+  <Card
+    sx={{
+      minHeight: "250px",
+      maxHeight: "250px",
+      overflowY: "auto",
+      "&::-webkit-scrollbar": {
+        display: "none",
+      },
+      pb: 1,
+      bgcolor: "#ffe6e6",
+    }}
+  >
     <CardContent>
       <Typography variant="h6">Health Summary</Typography>
       <List>
-        {vitals.map((item, i) => (
+        {vitals?.map((item, i) => (
           <ListItem key={i}>
-            {item.label}: {item.value}
+            Date : {item.date}, Bp : {item.bp} mmHg , Glucose : {item.glucose}{" "}
+            mg/dL , Hr :{item.hr} bpm
           </ListItem>
         ))}
       </List>

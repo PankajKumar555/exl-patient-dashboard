@@ -1,25 +1,71 @@
-// File: src/pages/insurance/components/OutcomesTracker.js
-import React from "react";
-import { Card, CardContent, Typography, List, ListItem } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  Divider,
+} from "@mui/material";
 
-const outcomes = [
-  { metric: "Hospital Readmission Rate", value: "5%" },
-  { metric: "Preventive Care Compliance", value: "92%" },
-];
+const OutcomesTracker = ({ tracker }) => {
+  const data = tracker?.[0];
 
-const OutcomesTracker = () => (
-  <Card>
-    <CardContent>
-      <Typography variant="h6">Outcomes Tracker</Typography>
-      <List>
-        {outcomes.map((item, i) => (
-          <ListItem key={i}>
-            {item.metric}: {item.value}
+  if (!data) return null;
+
+  return (
+    <Card
+      sx={{
+        minHeight: "250px",
+        maxHeight: "400px",
+        overflowY: "auto",
+        "&::-webkit-scrollbar": {
+          display: "none",
+        },
+        pb: 1,
+      }}
+    >
+      <CardContent>
+        <Typography variant="h6" gutterBottom>
+          Outcomes Tracker
+        </Typography>
+        <List dense>
+          <ListItem>
+            <ListItemText
+              primary="Total Plans Reviewed"
+              secondary={data.totalPlansReviewed}
+            />
           </ListItem>
-        ))}
-      </List>
-    </CardContent>
-  </Card>
-);
+          <Divider />
+          <ListItem>
+            <ListItemText primary="Approved" secondary={data.approvals} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary="Rejected" secondary={data.rejections} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText primary="Pending" secondary={data.pending} />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText
+              primary="Average Compliance Score"
+              secondary={`${data.averageComplianceScore}%`}
+            />
+          </ListItem>
+          <Divider />
+          <ListItem>
+            <ListItemText
+              primary="Most Common Compliance Flag"
+              secondary={data.mostCommonFlag}
+            />
+          </ListItem>
+        </List>
+      </CardContent>
+    </Card>
+  );
+};
 
 export default OutcomesTracker;
